@@ -1,50 +1,69 @@
 class Player
-	attr_accessor :name
-	attr_reader :health
+	attr_accessor :health
+	attr_reader 	:name
+
 
 	def initialize(name, health=100)
 		@name = name.capitalize
 		@health = health
 	end
 
-	def name=(new_name)
-		@name = new_name.capitalize
+	def increase_health
+		@health += 10
+		"#{@name} picked up health!"
 	end
 
-	def blam
-		@health -= 10
-		"#{@name} got blammed!"
-	end
-
-	def w00t
-		@health += 15
-		"#{@name} got w00ted!"
+	def decrease_health
+		@health -= 5
+		"#{@name} is losing health!"
 	end
 
 	def score
-		@health + @name.length
+		@name.length + @health
 	end
 
 	def to_s
-		"I'm #{@name} with a health of #{@health} and a score of #{score}."
+		"I am #{@name} with a health of #{@health} and a score of #{score}!"
+	end
+end
+
+class Game
+	attr_reader :name
+	attr_reader :players
+
+	def initialize(name)
+		@name = name.capitalize
+		@players = Array.new
+	end
+
+	def add_player(player)
+		@player = player
+		@players.push(@player)
+		puts "#{@player.name} has been added for #{@name}!"
+	end
+
+	def play
+		@players.each do |player|
+			puts player
+		end
+		@players.each do |player|
+			puts player.decrease_health
+			puts player.increase_health
+			puts player.increase_health
+			puts player
+		end
+
 	end
 
 end
 
+player1 = Player.new("sean", 150)
+player2 = Player.new("stephon", 135)
+player3 = Player.new("cory")
 
-player1 = Player.new("moe")
-player2 = Player.new("larry", 60)
-player3 = Player.new("curly", 125)
-player4 = Player.new("shemp", 90)
-
-
-players = [player1, player2, player3]
-players << player4
-players.delete_at(2)
-
-players.each do |player|
-	puts player.blam
-	puts player.w00t
-	puts player.w00t
-	puts player
-end
+game1 = Game.new("basketball")
+game1.add_player(player1)
+game1.add_player(player2)
+game1.add_player(player3)
+game1.play
+puts game1.players
