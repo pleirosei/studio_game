@@ -1,3 +1,4 @@
+require_relative 'player'
 require_relative 'game'
 
 player1 = Player.new("sean", 150)
