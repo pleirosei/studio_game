@@ -1,6 +1,6 @@
 class Player
 	attr_accessor :health
-	attr_reader 	:name
+	attr_reader :name
 
 
 	def initialize(name, health=100)
