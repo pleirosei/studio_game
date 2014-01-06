@@ -11,3 +11,4 @@ game1.add_player(player2)
 game1.add_player(player3)
 game1.play
 puts game1.players
+puts game1.players.inspect

@@ -8,6 +8,15 @@ class Player
 		@health = health
 	end
 
+	def good?
+		@health >= 150
+	end
+
+	def status
+		good? ? "He is a beast!" : "He should get good!"
+
+	end
+	
 	def increase_health
 		@health += 10
 		"#{@name} picked up health!"
@@ -23,7 +32,7 @@ class Player
 	end
 
 	def to_s
-		"I am #{@name} with a health of #{@health} and a score of #{score}!"
+		"I am #{@name} with a health of #{@health} and a score of #{score}!  #{status}"
 	end
 end
 
