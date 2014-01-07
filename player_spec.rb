@@ -17,7 +17,7 @@ describe Player do
 
 	it "has a string representation" do
 		
-		@player.to_s.should == "I am Sean with a health of 150 and a score of 154!  He is a beast!"
+		@player.to_s.should == "I am Sean with a health of 150 and a score of 154!"
 	end
 
 	it "computes a score as the sum of its health and length of name" do
@@ -37,32 +37,24 @@ describe Player do
 		@player.health.should == @initial_health - 5
 	end
 
-
-	context "with a health of atleast 150" do
+	context "this player is strong" do
 		before do
 			@player = Player.new("sean", 150)
 		end
 
-		it "he is good" do
-			@player.should be_good
-		end
+		it "has to be a strong player" do
 
-		it "has a good health status" do
-			@player.status.should == "He is a beast!"
+			@player.should be_strong
 		end
 	end
 
-	context "with a health of less than 150" do
+	context "this player is wimpy" do
 		before do
-			@player = Player.new("sean", 149)
+			@player = Player.new("sean", 99)
 		end
 
-		it "he is not good" do
-			@player.should_not be_good
-		end
-		it "he is a bad health status" do
-			@player.status.should == "He should get good!"
+		it "has to be a wimpy player" do
+			@player.should_not be_strong
 		end
 	end
-
 end

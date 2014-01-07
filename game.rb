@@ -20,9 +20,16 @@ class Game
 			puts player
 		end
 		@players.each do |player|
-			puts player.decrease_health
-			puts player.increase_health
-			puts player.increase_health
+			die = Die.new
+			case die.roll
+			when 1..2
+				player.decrease_health
+			when 3..4
+				puts "#{player.name} has been skipped!"
+			else
+				player.increase_health
+			end
+
 			puts player
 		end
 
