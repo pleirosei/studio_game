@@ -4,6 +4,7 @@ require_relative 'die'
 describe Game do
 
 	before do
+		$stdout = StringIO.new
 		@game = Game.new("basketball")
 
 		@initial_health = 100
