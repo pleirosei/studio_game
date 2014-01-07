@@ -10,12 +10,12 @@ class Player
 
 	def increase_health
 		@health += 10
-		"#{@name} picked up health!"
+		puts "#{@name} picked up health!"
 	end
 
 	def decrease_health
 		@health -= 5
-		"#{@name} is losing health!"
+		puts "#{@name} is losing health!"
 	end
 
 	def strong?
