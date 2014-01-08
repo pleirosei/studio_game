@@ -16,15 +16,15 @@ describe Game do
 	it "increaes the player's health" do
 		Die.any_instance.stub(:roll).and_return(5)
 
-		@game.play
+		@game.play(2)
 
-		@player.health.should == @initial_health + 10
+		@player.health.should == @initial_health + (10 * 2)
 	end
 
 	it "skips the player's health" do
 		Die.any_instance.stub(:roll).and_return(3)
 
-		@game.play
+		@game.play(2)
 
 		@player.health.should == @initial_health
 	end
@@ -32,15 +32,10 @@ describe Game do
 	it "decreases the player's health" do
 		Die.any_instance.stub(:roll).and_return(1)
 
-		@game.play
+		@game.play(2)
 
-		@player.health.should == @initial_health - 5
+		@player.health.should == @initial_health - (5 * 2)
 	end
-
-
-
-
-
 end 
 
 
