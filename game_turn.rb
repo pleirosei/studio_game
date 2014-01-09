@@ -12,5 +12,8 @@ module GameTurn
 		else
 			player.increase_health
 		end
+		
+		treasures = TreasureTrove.random
+		puts "#{player.name} found a #{treasures.name} worth #{treasures.points} points."
 	end
 end
