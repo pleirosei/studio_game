@@ -1,7 +1,9 @@
 require_relative 'player'
+require_relative 'treasure_trove'
 
 describe Player do
 	before do
+		$stdout = StringIO.new
 		@initial_health = 150
 		@player = Player.new("sean", @initial_health)
 	end
@@ -15,14 +17,18 @@ describe Player do
 		@player.health.should == @initial_health
 	end
 
-	it "has a string representation" do
-		
-		@player.to_s.should == "I am Sean with a health of 150 and a score of 154!"
+	it "has a string representation" do  
+  	@player.found_treasure(Treasure.new(:hammer, 50))
+	  @player.found_treasure(Treasure.new(:hammer, 50))
+
+  	@player.to_s.should == "I'm Sean with health = 150, points = 100, and score = 250."
 	end
 
-	it "computes a score as the sum of its health and length of name" do
-
-		@player.score.should == 154
+	it "computes a score as the sum of its health and points" do
+  	@player.found_treasure(Treasure.new(:hammer, 50))
+  	@player.found_treasure(Treasure.new(:hammer, 50))
+  
+  	@player.score.should == 250
 	end
 
 	it "increases health by 10 when health is increased" do
@@ -47,6 +53,22 @@ describe Player do
 			@player.should be_strong
 		end
 	end
+
+	it "computes points as the sum of all treasure points" do
+  @player.points.should == 0
+
+  @player.found_treasure(Treasure.new(:hammer, 50))
+
+  @player.points.should == 50
+
+  @player.found_treasure(Treasure.new(:crowbar, 400))
+  
+  @player.points.should == 450
+  
+  @player.found_treasure(Treasure.new(:hammer, 50))
+
+  @player.points.should == 500
+end
 
 	context "this player is wimpy" do
 		before do

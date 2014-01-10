@@ -36,6 +36,33 @@ describe Game do
 
 		@player.health.should == @initial_health - (5 * 2)
 	end
+
+	it "assigns a treasure for poitns during a player's turn" do
+		game = Game.new("scavenger")
+		player = Player.new("sean")
+
+		game.add_player(player)
+
+		game.play(1)
+
+		player.points.should_not be_zero
+	end
+
+	it "computes total points as the sum of all player points" do
+		game = Game.new("scavenger")
+
+		player1 = Player.new("sean")
+		player2 = Player.new("stephon")
+
+		game.add_player(player1)
+		game.add_player(player2)
+
+		player1.found_treasure(Treasure.new(:hammer, 50))
+		player1.found_treasure(Treasure.new(:hammer, 50))
+		player2.found_treasure(Treasure.new(:crowbar, 400))
+
+		game.total_points.should == 500
+	end
 end 
 
 
