@@ -10,6 +10,8 @@ game1 = Game.new("scavenger")
 game1.add_player(player1)
 game1.add_player(player2)
 game1.add_player(player3)
-game1.play(15)
+game1.play(10) do
+	game1.total_points >= 1000
+end
 puts game1.players
 game1.print_stats

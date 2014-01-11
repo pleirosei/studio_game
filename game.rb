@@ -20,8 +20,13 @@ class Game
 	def play(rounds)
 		puts "\nThere are #{@players.length} players in #{@title}!\n\n"
 
-		@players.each do |player|
-			puts player
+		1.upto(rounds) do |rounds|
+			if block_given?
+				break if yield
+			end
+			@players.each do |player|
+				puts player
+			end
 		end
 
 		treasures = TreasureTrove::TREASURES
