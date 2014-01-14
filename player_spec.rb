@@ -92,6 +92,13 @@ describe Player do
 		]
 	end
 
+	it "can be created from a CSV string" do
+		player = Player.from_csv("sean,150")
+
+		player.name.should == "Sean"
+		player.health.should == 150
+	end
+
 	context "this player is wimpy" do
 		before do
 			@player = Player.new("sean", 99)
