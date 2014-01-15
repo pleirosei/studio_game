@@ -1,9 +1,15 @@
 require_relative 'player'
+require_relative 'clumsy_player'
+require_relative 'berserk_player'
 require_relative 'game'
 require_relative 'die'
 
 game1 = Game.new("scavenger")
 game1.load_players(ARGV.shift || "players.csv")
+player4 = ClumsyPlayer.new('klutz', 105)
+player5 = BerserkPlayer.new('brent', 50)
+game1.add_player(player4)
+game1.add_player(player5)
 
 loop do 
 	puts "\nHow many game rounds? ('quit' to exit)"
