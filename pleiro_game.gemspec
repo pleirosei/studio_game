@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name				= "pleiro_game"
-	s.version			= "1.0.0"
+	s.version			= "1.0.1"
 	s.author			= "Sean Livingston"
 	s.email				= "sean.d.livingston@gmail.com"
 	s.homepage		= "http://gospelofjesusglory.com"
